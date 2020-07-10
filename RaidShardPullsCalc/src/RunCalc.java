@@ -41,7 +41,7 @@ public class RunCalc {
 			System.out.println("Your chances of pulling " + i + " legendaries are " + percentages[i] + "%");
 		}
 		
-		//System.out.println("Temp: " + temp1);
+		//System.out.println("Temp1: " + temp1);
 		
 	}
 	
@@ -67,7 +67,7 @@ public class RunCalc {
 			System.out.println("Your chances of pulling " + i + " legendaries are " + percentages[i] + "%");
 		}
 	
-		//System.out.println("Temp: " + temp2);
+		//System.out.println("Temp2: " + temp2);
 	}
 	
 		
@@ -78,12 +78,12 @@ public class RunCalc {
 			
 			percentages[0] = Math.pow((epicPullRate/100.0), numShards) * Math.pow(10, 2);
 			
-			//double temp = percentages[0];
+			//double temp3 = percentages[0];
 			
 			for(int i=1; i<numShards+1; i++) {
 				
 				percentages[i] = numShards * (Math.pow((1.0 - legoPullRate/100.0), numShards - i)) * (Math.pow((legoPullRate/100.0), i)) * Math.pow(10, 2); 
-				//temp = temp + percentages[i];
+				//temp3 = temp3 + percentages[i];
 			}
 			
 			System.out.println();
@@ -91,7 +91,7 @@ public class RunCalc {
 			for (int i=0; i<numShards+1 ;i++) {
 				System.out.println("Your chances of pulling " + i + " legendaries are " + percentages[i] + "%");
 			}
-		//System.out.println("Temp: " + temp);
+		//System.out.println("Temp3: " + temp3);
 	}
 	
 	
