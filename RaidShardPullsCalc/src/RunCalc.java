@@ -16,20 +16,19 @@ public class RunCalc {
 		
 		getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
 		getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
-		//getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
+		getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
 		
 	}
 	
 	public static void getNumLegosFromAncients(int numShards, double commonPullRate, double epicPullRate, double legoPullRate) {
 		
-		double[] percentages = new double[numShards];
-		int count = 5;
+		double[] percentages = new double[numShards+1];
 		
 		percentages[0] = Math.pow((1.0-(legoPullRate/100.0)), numShards) * Math.pow(10, 2);
 		
 		//double temp1 = percentages[0];
 		
-		for(int i=1; i<numShards; i++) {
+		for(int i=1; i<numShards+1; i++) {
 			
 			percentages[i] = numShards * (Math.pow((1.0 - legoPullRate/100.0), numShards - i)) * (Math.pow((legoPullRate/100.0), i)) * Math.pow(10, 2);
 			//temp1 = temp1 + percentages[i];
@@ -39,7 +38,7 @@ public class RunCalc {
 		
 		System.out.println();
 		System.out.println("Ancient Shard Results:");
-		for (int i=0; i<count-1;i++) {
+		for (int i=0; i<numShards+1; i++) {
 			System.out.println("Your chances of pulling " + i + " legendaries are " + percentages[i] + "%");
 		}
 		
@@ -49,13 +48,12 @@ public class RunCalc {
 	
 	public static void getNumLegosFromVoids(int numShards, double commonPullRate, double epicPullRate, double legoPullRate) {
 		
-		double[] percentages = new double[numShards];
-		int count = 5;
+		double[] percentages = new double[numShards+1];
 		
 		percentages[0] = Math.pow((1.0-(legoPullRate/100.0)), numShards) * Math.pow(10, 2);
 		
 		//double temp2 = percentages[0];
-		for(int i=1; i<numShards; i++) {
+		for(int i=1; i<numShards+1; i++) {
 			
 			
 			percentages[i] = numShards * (Math.pow((1.0 - legoPullRate/100.0), numShards - i)) * (Math.pow((legoPullRate/100.0), i)) * Math.pow(10, 2);
@@ -66,7 +64,7 @@ public class RunCalc {
 		
 		System.out.println();
 		System.out.println("Void Shard Results:");
-		for (int i=0; i<count-1;i++) {
+		for (int i=0; i<numShards+1 ;i++) {
 			System.out.println("Your chances of pulling " + i + " legendaries are " + percentages[i] + "%");
 		}
 	
@@ -76,22 +74,22 @@ public class RunCalc {
 		
 		public static void getNumLegosFromSacreds(int numShards, double epicPullRate, double legoPullRate) {
 			
-			double[] percentages = new double[numShards];
-			int count = 5;
+			double[] percentages = new double[numShards+1];
+			//int count = 5;
 			
 			percentages[0] = Math.pow((epicPullRate/100.0), numShards) * Math.pow(10, 2);
 			
 			//double temp = percentages[0];
 			
-			for(int i=1; i<numShards; i++) {
+			for(int i=1; i<numShards+1; i++) {
 				
-				percentages[i] = Math.pow((epicPullRate/100.0), (numShards-i)) * Math.pow((legoPullRate/100.0),i) * Math.pow(10,2); 
+				percentages[i] = numShards * (Math.pow((1.0 - legoPullRate/100.0), numShards - i)) * (Math.pow((legoPullRate/100.0), i)) * Math.pow(10, 2); 
 				//temp = temp + percentages[i];
 			}
 			
 			System.out.println();
 			System.out.println("Sacred Shard Results:");
-			for (int i=0; i<count-1;i++) {
+			for (int i=0; i<numShards+1 ;i++) {
 				System.out.println("Your chances of pulling " + i + " legendaries are " + percentages[i] + "%");
 			}
 		//System.out.println("Temp: " + temp);
