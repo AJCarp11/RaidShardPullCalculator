@@ -3,7 +3,6 @@ import java.lang.Math;
 public class RunCalc {
 		
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		GetNumShards info = new GetNumShards();
 		SetRates rates = new SetRates();
