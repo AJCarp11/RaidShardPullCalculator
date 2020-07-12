@@ -5,14 +5,7 @@ public class SetRates {
 	static double[] VoidPullRates = {83.0, 16.0, 1.0};
 	static double[] SacredPullRates = {94.0, 6.0};
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		getAncientRates();
-		getVoidRates();
-		getSacredRates();
-		
-	}
+	// Works for x10 in plans
 
 	public static double[] getAncientRates() {
 		
