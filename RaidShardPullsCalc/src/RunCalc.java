@@ -13,9 +13,68 @@ public class RunCalc {
 	
 	public static void runAllCalculations(int numAncients, int numVoids, int numSacreds, double ancientPullRateCommon, double ancientPullRateEpic, double ancientPullRateLego, double voidPullRateCommon, double voidPullRateEpic, double voidPullRateLego, double sacredPullRateEpic, double sacredPullRateLego) {
 		
-		getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
-		getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
-		getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
+		int flag = 0;
+		
+		// Only Ancients
+		if (numVoids == 0 && numSacreds == 0 && numAncients !=  0) {
+			flag = 0;
+		}
+		// Only Voids
+		else if (numAncients == 0 && numSacreds == 0 && numVoids !=  0) {
+			flag = 1;
+		}
+		// Only Sacreds
+		else if (numAncients == 0 && numVoids == 0 && numSacreds !=  0) {
+			flag = 2;
+		}
+		// Ancients and Voids
+		else if (numSacreds == 0 && numAncients != 0 && numVoids != 0) {
+			flag = 3;
+		}
+		// Ancients and Sacreds
+		else if (numVoids == 0 && numAncients != 0 && numSacreds != 0) {
+			flag = 4;
+		}
+		// Voids and Sacreds
+		else if (numAncients == 0 && numVoids != 0 && numSacreds != 0) {
+			flag = 5;
+		}
+		// Ancients, Voids, and Sacreds
+		else if (numAncients != 0 && numVoids != 0 && numSacreds != 0) {
+			flag = 6;
+		}
+		
+		
+		
+		switch (flag) {
+			case 0:
+				getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
+			break;
+			case 1:
+				getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
+			break;
+			case 2:
+				getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
+			break;
+			case 3:
+				getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
+				getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
+			break;
+			case 4:
+				getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
+				getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
+			break;
+			case 5:
+				getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
+				getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
+			break;
+			case 6:
+				getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
+				getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
+				getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
+			break;
+			
+		}
 		
 	}
 	
