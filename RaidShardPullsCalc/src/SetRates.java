@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class SetRates {
 	
 	// This is where you can change pull rates for x2 summons!!
