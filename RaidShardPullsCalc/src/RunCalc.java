@@ -7,6 +7,13 @@ public class RunCalc {
 		GetNumShards info = new GetNumShards();
 		SetRates rates = new SetRates();
 		
+		int[] numShards = new int[2];
+		
+		numShards[0] = info.getNumAncientShards();
+		numShards[1] = info.getNumVoidShards();
+		numShards[2] = info.getNumSacredShards();
+		
+		
 		runAllCalculations(info.getNumAncientShards(), info.getNumVoidShards(), info.getNumSacredShards(), rates.getAncientRates()[0], rates.getAncientRates()[1], rates.getAncientRates()[2], rates.getVoidRates()[0], rates.getVoidRates()[1], rates.getVoidRates()[2], rates.getSacredRates()[0], rates.getSacredRates()[1]);
 	
 	}
