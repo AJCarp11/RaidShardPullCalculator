@@ -11,8 +11,6 @@ public class RunCalc {
 		numShards[1] = GetNumShards.getNumVoidShards();
 		numShards[2] = GetNumShards.getNumSacredShards();
 		
-		//runAllCalculations(numShards[0], numShards[1], numShards[2], SetRates.getAncientRates()[0], SetRates.getAncientRates()[1], SetRates.getAncientRates()[2], SetRates.getVoidRates()[0], SetRates.getVoidRates()[1], SetRates.getVoidRates()[2], SetRates.getSacredRates()[0], SetRates.getSacredRates()[1]);
-		
 		double[] ancientPulls = new double[3];
 		ancientPulls = RunPullsSim.runSimAncients(numShards[0]);
 		
