@@ -87,21 +87,25 @@ public static void runAllCalculations(int numAncients, int numVoids, int numSacr
 				getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
 			break;
 			
+			// Add epic chances here!
 			case 3:
 				getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
 				getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
 			break;
 			
+			// Add epic chances here!
 			case 4:
 				getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
 				getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
 			break;
 			
+			// Add epic chances here!
 			case 5:
 				getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
 				getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
 			break;
 			
+			// Add epic chances here!
 			case 6:
 				getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
 				getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);

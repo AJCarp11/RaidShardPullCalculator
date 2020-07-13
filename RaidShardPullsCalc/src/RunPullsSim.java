@@ -28,6 +28,57 @@ public class RunPullsSim {
 		return pulls;
 	}
 	
+	
+	// The following is commented out because it needs to track separately the simulations for Voids and Sacreds
+	// Also need print statements to distinguish these simulations
+	
+	/*public static double[] runSimVoids(int numVoids) {
+		
+		double[] temp = new double[3];
+		double[] pulls = new double[3];
+		
+		for (int i=0; i < numVoids; i++) {
+			double num = generateRandomPull();
+			temp = evaluatePulls(num);
+			
+			if (temp[0] == 1.0) {
+				pulls[0]++;
+			}
+			else if (temp[1] == 1.0) {
+				pulls[1]++;
+			}
+			else {
+				pulls[2]++;
+			}
+		}
+		
+		return pulls;
+	}
+
+	public static double[] runSimSacreds(int numSacreds) {
+	
+	double[] temp = new double[3];
+	double[] pulls = new double[3];
+	
+	for (int i=0; i < numSacreds; i++) {
+		double num = generateRandomPull();
+		temp = evaluatePulls(num);
+		
+		if (temp[0] == 1.0) {
+			pulls[0]++;
+		}
+		else if (temp[1] == 1.0) {
+			pulls[1]++;
+		}
+		else {
+			pulls[2]++;
+		}
+	}
+	
+	return pulls;
+}*/
+	
+	
 	public static double generateRandomPull() {
 		
 		Random rand = new Random();
