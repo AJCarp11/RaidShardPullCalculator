@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.util.Scanner;
 
 public class RunCalc {
 		
@@ -10,8 +11,34 @@ public class RunCalc {
 		numShards[1] = GetNumShards.getNumVoidShards();
 		numShards[2] = GetNumShards.getNumSacredShards();
 		
+		//runAllCalculations(numShards[0], numShards[1], numShards[2], SetRates.getAncientRates()[0], SetRates.getAncientRates()[1], SetRates.getAncientRates()[2], SetRates.getVoidRates()[0], SetRates.getVoidRates()[1], SetRates.getVoidRates()[2], SetRates.getSacredRates()[0], SetRates.getSacredRates()[1]);
+		
+		double[] ancientPulls = new double[3];
+		ancientPulls = RunPullsSim.runSimAncients(numShards[0]);
+		
+		Scanner scanNumSims = new Scanner(System.in);
+		System.out.println("How many simulations would you like to run? ");
+		int count = scanNumSims.nextInt();
+		scanNumSims.close();
+		
+		double[] simTemp = new double[3];
+		double[] averagePulls = new double[3];
+		
+		if (count > 0) {
+			for (int i=0; i < count; i++) {
+				ancientPulls = RunPullsSim.runSimAncients(numShards[0]);
+				simTemp[0] += ancientPulls[0];
+				simTemp[1] += ancientPulls[1];
+				simTemp[2] += ancientPulls[2];
+				
+			}
+			
+			averagePulls = RunPullsSim.averagePulls(count, simTemp[0], simTemp[1], simTemp[2]);
+			
+			RunPullsSim.printResults(count, averagePulls[0], averagePulls[1], averagePulls[2]);
+		}
+		
 		runAllCalculations(numShards[0], numShards[1], numShards[2], SetRates.getAncientRates()[0], SetRates.getAncientRates()[1], SetRates.getAncientRates()[2], SetRates.getVoidRates()[0], SetRates.getVoidRates()[1], SetRates.getVoidRates()[2], SetRates.getSacredRates()[0], SetRates.getSacredRates()[1]);
-	
 	}
 	
 public static void runAllCalculations(int numAncients, int numVoids, int numSacreds, double ancientPullRateCommon, double ancientPullRateEpic, double ancientPullRateLego, double voidPullRateCommon, double voidPullRateEpic, double voidPullRateLego, double sacredPullRateEpic, double sacredPullRateLego) {
@@ -103,7 +130,7 @@ public static void runAllCalculations(int numAncients, int numVoids, int numSacr
 		
 		int flag = 0;
 		for (int i=0; i<numShards+1; i++) {
-			if (percentages[i] >= Math.pow(10.0, -5)) {
+			if (percentages[i] >= Math.pow(10.0, -3)) {
 				flag++;
 			}
 		}
@@ -133,7 +160,7 @@ public static void runAllCalculations(int numAncients, int numVoids, int numSacr
 		
 		int flag = 0;
 		for (int i=0; i<numShards+1; i++) {
-			if (percentages[i] >= Math.pow(10.0, -5)) {
+			if (percentages[i] >= Math.pow(10.0, -3)) {
 				flag++;
 			}
 		}
@@ -163,7 +190,7 @@ public static void runAllCalculations(int numAncients, int numVoids, int numSacr
 		
 		int flag = 0;
 		for (int i=0; i<numShards+1; i++) {
-			if (percentages[i] >= Math.pow(10.0, -5)) {
+			if (percentages[i] >= Math.pow(10.0, -3)) {
 				flag++;
 			}
 		}
@@ -192,7 +219,7 @@ public static void runAllCalculations(int numAncients, int numVoids, int numSacr
 		
 		int flag = 0;
 		for (int i=0; i<numShards+1; i++) {
-			if (percentages[i] >= Math.pow(10.0, -5)) {
+			if (percentages[i] >= Math.pow(10.0, -3)) {
 				flag++;
 			}
 		}

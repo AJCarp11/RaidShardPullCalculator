@@ -23,7 +23,6 @@ public class GetNumShards {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("How many sacreds are you pulling? ");
 		int num = scan.nextInt();
-		scan.close();
 		return num;
 	}
 
