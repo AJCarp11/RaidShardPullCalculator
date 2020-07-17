@@ -12,7 +12,7 @@ public class RunPullsSim {
 		
 		for (int i=0; i < numAncients; i++) {
 			double num = generateRandomPull();
-			temp = evaluatePulls(num);
+			temp = evaluatePulls(0, num);
 			
 			if (temp[0] == 1.0) {
 				pulls[0]++;
@@ -32,14 +32,14 @@ public class RunPullsSim {
 	// The following is commented out because it needs to track separately the simulations for Voids and Sacreds
 	// Also need print statements to distinguish these simulations
 	
-	/*public static double[] runSimVoids(int numVoids) {
+	public static double[] runSimVoids(int numVoids) {
 		
 		double[] temp = new double[3];
 		double[] pulls = new double[3];
 		
 		for (int i=0; i < numVoids; i++) {
 			double num = generateRandomPull();
-			temp = evaluatePulls(num);
+			temp = evaluatePulls(1, num);
 			
 			if (temp[0] == 1.0) {
 				pulls[0]++;
@@ -57,26 +57,23 @@ public class RunPullsSim {
 
 	public static double[] runSimSacreds(int numSacreds) {
 	
-	double[] temp = new double[3];
-	double[] pulls = new double[3];
+	double[] temp = new double[2];
+	double[] pulls = new double[2];
 	
 	for (int i=0; i < numSacreds; i++) {
 		double num = generateRandomPull();
-		temp = evaluatePulls(num);
+		temp = evaluatePulls(2, num);
 		
 		if (temp[0] == 1.0) {
 			pulls[0]++;
 		}
-		else if (temp[1] == 1.0) {
-			pulls[1]++;
-		}
 		else {
-			pulls[2]++;
+			pulls[1]++;
 		}
 	}
 	
-	return pulls;
-}*/
+		return pulls;
+	}
 	
 	
 	public static double generateRandomPull() {
@@ -88,21 +85,59 @@ public class RunPullsSim {
 		return num;
 	}
 	
-	public static double[] evaluatePulls(double rand) {
-				
+	// Flag represents which shards are being simulated at their respective rates.
+	// Can only be [0, 1, 2] --> [Ancients, Voids, Sacreds].
+	public static double[] evaluatePulls(int identifier, double rand) {
+		
+		int flag = identifier;
 		double[] results = new double[3];
 		
-		// Rare pull
-		if (rand <= SetRates.getAncientRates()[0] * 10) {
-			results[0]++;
-		}
-		// Epic Pull
-		else if (rand > (SetRates.getAncientRates()[0] * 10) && rand <= ((SetRates.getAncientRates()[0] + SetRates.getAncientRates()[1]) * 10)) {
-			results[1]++;
-		}
-		// Lego Pull
-		else {
-			results[2]++;
+		
+		switch (flag) {
+		
+			// Ancients
+			case 0:
+				// Rare pull
+				if (rand <= SetRates.getAncientRates()[0] * 10) {
+					results[0]++;
+				}
+				// Epic Pull
+				else if (rand > (SetRates.getAncientRates()[0] * 10) && rand <= ((SetRates.getAncientRates()[0] + SetRates.getAncientRates()[1]) * 10)) {
+					results[1]++;
+				}
+				// Lego Pull
+				else {
+					results[2]++;
+				}
+			break;
+			
+			// Voids
+			case 1:
+				// Rare pull
+				if (rand <= SetRates.getVoidRates()[0] * 10) {
+					results[0]++;
+				}
+				// Epic Pull
+				else if (rand > (SetRates.getVoidRates()[0] * 10) && rand <= ((SetRates.getVoidRates()[0] + SetRates.getVoidRates()[1]) * 10)) {
+					results[1]++;
+				}
+				// Lego Pull
+				else {
+					results[2]++;
+				}
+			break;
+			
+			// Sacreds
+			case 2:
+				// Epic Pull
+				if (rand <= (SetRates.getSacredRates()[0]) * 10) {
+					results[0]++;
+				}
+				// Lego Pull
+				else {
+					results[1]++;
+				}
+			break;
 		}
 		
 		return results;
@@ -120,11 +155,20 @@ public class RunPullsSim {
 	}
 	
 	public static void printResults(int numSims, double numRares, double numEpics, double numLegos) {
-
-		System.out.println("After " + numSims + " simulations, the average of pulls were: ");
-		System.out.println(numRares + " rares.");
-		System.out.println(numEpics + " epics.");
-		System.out.println(numLegos + " legos.");
+		
+		if (numRares != 0) {
+			System.out.println();
+			System.out.println("After " + numSims + " simulations, the average of pulls were: ");
+			System.out.println(numRares + " rares.");
+			System.out.println(numEpics + " epics.");
+			System.out.println(numLegos + " legos.");
+		}
+		else {
+			System.out.println();
+			System.out.println("After " + numSims + " simulations, the average of pulls were: ");
+			System.out.println(numEpics + " epics.");
+			System.out.println(numLegos + " legos.");
+		}
 		
 	}
 	
