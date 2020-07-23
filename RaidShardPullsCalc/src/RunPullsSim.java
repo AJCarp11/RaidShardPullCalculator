@@ -168,18 +168,20 @@ public class RunPullsSim {
 			shard = "Sacred";
 		}
 		
-		if (numRares != 0) {
-			System.out.println();
-			System.out.println("After " + numSims + " " + shard + " simulations, the average of pulls were: ");
-			System.out.println(numRares + " rares.");
-			System.out.println(numEpics + " epics.");
-			System.out.println(numLegos + " legos.");
-		}
-		else {
-			System.out.println();
-			System.out.println("After " + numSims + " " + shard + " simulations, the average of pulls were: ");
-			System.out.println(numEpics + " epics.");
-			System.out.println(numLegos + " legos.");
+		if (numSims != 0) {
+			if (numRares != 0) {
+				System.out.println();
+				System.out.println("After " + numSims + " " + shard + " simulations, the average of pulls were: ");
+				System.out.println(numRares + " rares.");
+				System.out.println(numEpics + " epics.");
+				System.out.println(numLegos + " legos.");
+			}
+			else {
+				System.out.println();
+				System.out.println("After " + numSims + " " + shard + " simulations, the average of pulls were: ");
+				System.out.println(numEpics + " epics.");
+				System.out.println(numLegos + " legos.");
+			}
 		}
 		
 	}
