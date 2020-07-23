@@ -154,18 +154,30 @@ public class RunPullsSim {
 		return average;
 	}
 	
-	public static void printResults(int numSims, double numRares, double numEpics, double numLegos) {
+	public static void printResults(int numSims, double numRares, double numEpics, double numLegos, int shardType) {
+		
+		String shard = "";
+		
+		if (shardType == 0) {
+			shard = "Ancient";
+		}
+		else if (shardType == 1) {
+			shard = "Void";
+		}
+		else {
+			shard = "Sacred";
+		}
 		
 		if (numRares != 0) {
 			System.out.println();
-			System.out.println("After " + numSims + " simulations, the average of pulls were: ");
+			System.out.println("After " + numSims + " " + shard + " simulations, the average of pulls were: ");
 			System.out.println(numRares + " rares.");
 			System.out.println(numEpics + " epics.");
 			System.out.println(numLegos + " legos.");
 		}
 		else {
 			System.out.println();
-			System.out.println("After " + numSims + " simulations, the average of pulls were: ");
+			System.out.println("After " + numSims + " " + shard + " simulations, the average of pulls were: ");
 			System.out.println(numEpics + " epics.");
 			System.out.println(numLegos + " legos.");
 		}

@@ -77,47 +77,68 @@ public static void runAllCalculations(int simulations, int numAncients, int numV
 				//getNumEpicsFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
 				getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
 				averagePullsAncients = RunPullsSim.runSimAncients(numAncients);
-				RunPullsSim.printResults(simulations, averagePullsAncients[0], averagePullsAncients[1], averagePullsAncients[2]);
+				RunPullsSim.printResults(simulations, averagePullsAncients[0], averagePullsAncients[1], averagePullsAncients[2], 0);
 			break;
 			// Only Voids
 			case 1:
 				//getNumEpicsFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
 				getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
 				averagePullsVoids = RunPullsSim.runSimVoids(numVoids);
-				RunPullsSim.printResults(simulations, averagePullsVoids[0], averagePullsVoids[1], averagePullsVoids[2]);
+				RunPullsSim.printResults(simulations, averagePullsVoids[0], averagePullsVoids[1], averagePullsVoids[2], 1);
 			break;
 			// Only Sacreds
 			case 2:
 				getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
 				averagePullsSacreds = RunPullsSim.runSimSacreds(numSacreds);
-				RunPullsSim.printResults(simulations, 0, averagePullsSacreds[0], averagePullsSacreds[1]);
-				System.out.println(averagePullsSacreds[0]);
-				System.out.println(averagePullsSacreds[1]);
+				RunPullsSim.printResults(simulations, 0, averagePullsSacreds[0], averagePullsSacreds[1], 2);
 			break;
 			// Ancients and Voids
 			// Add epic chances here!
 			case 3:
 				getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
+				averagePullsAncients = RunPullsSim.runSimAncients(numAncients);
+				RunPullsSim.printResults(simulations, averagePullsAncients[0], averagePullsAncients[1], averagePullsAncients[2], 0);
+				
 				getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
+				averagePullsVoids = RunPullsSim.runSimVoids(numVoids);
+				RunPullsSim.printResults(simulations, averagePullsVoids[0], averagePullsVoids[1], averagePullsVoids[2], 1);
 			break;
 			// Ancients and Sacreds
 			// Add epic chances here!
 			case 4:
 				getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
+				averagePullsAncients = RunPullsSim.runSimAncients(numAncients);
+				RunPullsSim.printResults(simulations, averagePullsAncients[0], averagePullsAncients[1], averagePullsAncients[2], 0);
+				
 				getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
+				averagePullsSacreds = RunPullsSim.runSimSacreds(numSacreds);
+				RunPullsSim.printResults(simulations, 0, averagePullsSacreds[0], averagePullsSacreds[1], 2);
 			break;
 			// Voids and Sacreds
 			// Add epic chances here!
 			case 5:
 				getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
+				averagePullsVoids = RunPullsSim.runSimVoids(numVoids);
+				RunPullsSim.printResults(simulations, averagePullsVoids[0], averagePullsVoids[1], averagePullsVoids[2], 1);
+				
 				getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
+				averagePullsSacreds = RunPullsSim.runSimSacreds(numSacreds);
+				RunPullsSim.printResults(simulations, 0, averagePullsSacreds[0], averagePullsSacreds[1], 2);
 			break;
 			// Ancients, Voids, and Sacreds
 			// Add epic chances here!
 			case 6:
 				getNumLegosFromAncients(numAncients, ancientPullRateCommon, ancientPullRateEpic, ancientPullRateLego);
+				averagePullsAncients = RunPullsSim.runSimAncients(numAncients);
+				RunPullsSim.printResults(simulations, averagePullsAncients[0], averagePullsAncients[1], averagePullsAncients[2], 0);
+				
 				getNumLegosFromVoids(numVoids, voidPullRateCommon, voidPullRateEpic, voidPullRateLego);
+				averagePullsVoids = RunPullsSim.runSimVoids(numVoids);
+				RunPullsSim.printResults(simulations, averagePullsVoids[0], averagePullsVoids[1], averagePullsVoids[2], 1);
+				
 				getNumLegosFromSacreds(numSacreds, sacredPullRateEpic, sacredPullRateLego);
+				averagePullsSacreds = RunPullsSim.runSimSacreds(numSacreds);
+				RunPullsSim.printResults(simulations, 0, averagePullsSacreds[0], averagePullsSacreds[1], 2);
 			break;
 			
 		}
